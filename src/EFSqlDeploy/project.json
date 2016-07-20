@@ -7,6 +7,6 @@
   },
 
   "frameworks": {
-    "net46": {}
+    "net46": {} // .net core requires ef7. Which right now is not widly used.
   }
 }

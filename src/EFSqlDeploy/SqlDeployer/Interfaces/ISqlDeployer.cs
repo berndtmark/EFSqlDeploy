@@ -8,6 +8,6 @@ namespace EFSqlDeploy.Interfaces.SqlDeployer
 {
     public interface ISqlDeployer
     {
-        bool ApplyScripts(string fileSuffix);
+        void ApplyScripts(string fileSuffix);
     }
 }

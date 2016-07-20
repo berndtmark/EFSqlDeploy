@@ -4,11 +4,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using EFSqlDeploy.Constants;
+using EFSqlDeploy.Extentions;
 using EFSqlDeploy.Interfaces.SqlDeployer;
 
 namespace EFSqlDeploy.SqlDeployer
 {
-    public class SqlDeployer : DbBase, ISqlDeployer
+    public sealed class SqlDeployer : DbBase, ISqlDeployer
     {
         private readonly Assembly _assembly;
 
@@ -22,9 +24,16 @@ namespace EFSqlDeploy.SqlDeployer
             this._assembly = scriptAssembly;
         }
 
-        public bool ApplyScripts(string fileSuffix)
-        { 
-            throw new NotImplementedException();
+        public void ApplyScripts(string fileSuffix)
+        {
+            var scripts = _assembly.GetFileContent(fileSuffix);
+
+            foreach (string script in scripts)
+            {
+                script.Split(new string[] { SqlCommands.Go }, StringSplitOptions.RemoveEmptyEntries)
+                      .Where(sql => sql.Trim().Length > 0)
+                      .ToList().ForEach(sql => ExecuteSql(sql));
+            }
         }
     }
 }

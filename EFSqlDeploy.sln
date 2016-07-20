@@ -14,7 +14,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EFSqlDeploy", "src\EFSqlDep
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{39CC9F39-A8DA-414D-8969-CEF43565A06E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFSqlDeploy.UnitTests", "test\EFSqlDeploy.UnitTests\EFSqlDeploy.UnitTests.csproj", "{F9317CB0-2908-4D71-9F05-E6BD4D87EE8D}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EfSqlDeploy.Tests", "test\EfSqlDeploy.Tests\EfSqlDeploy.Tests.xproj", "{49067F46-90A5-4B1A-B59B-953D28FA6CD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,16 +26,16 @@ Global
 		{A7AFFB78-E702-4587-BAA1-075E648551F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7AFFB78-E702-4587-BAA1-075E648551F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7AFFB78-E702-4587-BAA1-075E648551F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9317CB0-2908-4D71-9F05-E6BD4D87EE8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9317CB0-2908-4D71-9F05-E6BD4D87EE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9317CB0-2908-4D71-9F05-E6BD4D87EE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9317CB0-2908-4D71-9F05-E6BD4D87EE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49067F46-90A5-4B1A-B59B-953D28FA6CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49067F46-90A5-4B1A-B59B-953D28FA6CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49067F46-90A5-4B1A-B59B-953D28FA6CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49067F46-90A5-4B1A-B59B-953D28FA6CD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A7AFFB78-E702-4587-BAA1-075E648551F2} = {ED66F5E0-CEEF-4923-925D-EEB5CBC3DBE7}
-		{F9317CB0-2908-4D71-9F05-E6BD4D87EE8D} = {39CC9F39-A8DA-414D-8969-CEF43565A06E}
+		{49067F46-90A5-4B1A-B59B-953D28FA6CD5} = {39CC9F39-A8DA-414D-8969-CEF43565A06E}
 	EndGlobalSection
 EndGlobal

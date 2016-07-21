@@ -8,6 +8,7 @@ namespace EFSqlDeploy.Interfaces.SqlDeployer
 {
     public interface ISqlDeployer
     {
+        IList<string> GetScripts(string fileSuffix);
         void ApplyScripts(string fileSuffix);
     }
 }

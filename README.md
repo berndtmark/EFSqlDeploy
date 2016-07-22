@@ -1,19 +1,18 @@
 # EFSqlDeploy
 
-EFSqlDeploy is a tool that can automate Sql deployments for Entity Framework. The SQL files will run on the server when the application is started.
+EFSqlDeploy is a tool that can automate Sql deployments for Entity Framework (current EF6 is supported).
 
-It is important to note that all Sql files need to have a Build Action of "Embedded Resource" otherwise they will not be included in the dll and will not be found.
+It is important to note that all Sql files need to have a Build Action of "Embedded Resource" otherwise they will not be found.
 
---
-
-To deploy files when the application starts, add the file name suffix to the SqlDeployer in the Configuration class. 
-All files ending in this suffix will be executed on the application's database.
+##Usage
+To deploy Sql files when the application starts, add the file name suffix to the SqlDeployer in the Configuration class. 
+All files ending in this suffix will be executed on the application's database when the Seed method is executed.
 
         protected override void Seed(MyDataContext context)
         {
             var sqlDeployer = new SqlDeployer(context);
-            sqlDeployer.ApplySqlScripts(".proc.sql");
-            sqlDeployer.ApplySqlScripts(".function.sql");
+            sqlDeployer.ApplyScripts(".proc.sql");
+            sqlDeployer.ApplyScripts(".function.sql");
         }
 
 The SqlScript class offers a method to retrieve a scripts content and replace any values if present (similar to string.Format).

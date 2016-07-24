@@ -29,5 +29,13 @@ namespace EfSqlDeploy.Tests.Tests
 
             Assert.AreEqual("CREATE", result.ToString().Substring(0, 6));
         }
+
+        [Test]
+        public void SqlScript_WithReplacementValues_ValuesReplaced()
+        {
+            var result = SqlScript.GetSqlScript("Two.proc.sql", "Success");
+
+            Assert.AreEqual("Success", result.Substring(result.Length - 7));
+        }
     }
 }

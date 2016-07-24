@@ -12,39 +12,33 @@ using EFSqlDeploy.Interfaces.SqlDeployer;
 [assembly: InternalsVisibleTo("EfSqlDeploy.Tests")]
 namespace EFSqlDeploy.SqlDeployer
 {
-    public sealed class SqlDeployer : DbBase, ISqlDeployer
+    public sealed class SqlDeployer : SqlDeployerBase, ISqlDeployer 
     {
-        private readonly Assembly _assembly;
+        private readonly DbContext _context;
 
-        public SqlDeployer(DbContext context) : base(context)
+        public SqlDeployer(DbContext context) : base(Assembly.GetCallingAssembly())
         {
-            this._assembly = Assembly.GetCallingAssembly();
+            this._context = context;
         }
         
-        public SqlDeployer(DbContext context, Assembly scriptAssembly) : base(context)
+        public SqlDeployer(DbContext context, Assembly scriptAssembly) : base(scriptAssembly)
         {
-            this._assembly = scriptAssembly;
+            this._context = context;
         }
 
-        public void ApplyScripts(string fileSuffix)
+        public new void ApplyScripts(string fileSuffix)
         {
-            var scripts = GetScripts(fileSuffix);
-
-            scripts.ToList().ForEach(sql => ExecuteSql(sql));
+            base.ApplyScripts(fileSuffix);
         }
 
-        public IList<string> GetScripts(string fileSuffix)
+        public new IList<string> GetScripts(string fileSuffix)
         {
-            var scriptsContentList = new List<string>();
-            var scripts = _assembly.GetFileContent(fileSuffix);
+            return base.GetScripts(fileSuffix);
+        }
 
-            foreach (string script in scripts)
-            {
-                scriptsContentList.AddRange(script.Split(new string[] { SqlCommands.Go }, StringSplitOptions.RemoveEmptyEntries)
-                      .Where(sql => sql.Trim().Length > 0));
-            }
-
-            return scriptsContentList;
+        protected override void ExecuteSql(string sql)
+        {
+            this._context.Database.ExecuteSqlCommand(sql);
         }
     }
 }
